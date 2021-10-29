@@ -3,7 +3,7 @@ agent any
   stages {
     stage('build') {
       steps {
-        sh "venv/bin/activate && pip install -r requirements.txt"
+        sh ". venv/bin/activate && pip install -r requirements.txt"
       }
     }
     stage('test') {
