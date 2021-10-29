@@ -8,7 +8,7 @@ agent any
     }
     stage('test') {
       steps {
-        sh 'python test.py'
+        sh 'venv/bin/python3 test.py'
       }
       post {
         always {
