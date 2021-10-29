@@ -3,7 +3,7 @@ agent any
   stages {
     stage('build') {
       steps {
-        sh 'pip install --target ${env.WORKSPACE} -r requirements.txt'
+        sh "virtualenv venv && . venv/bin/activate && pip install -r requirements.txt"
       }
     }
     stage('test') {
