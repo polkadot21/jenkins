@@ -15,9 +15,10 @@ agent any
         echo 'Testing...'
         sh '. venv/bin/activate && python3 test.py'
       }
-      post {
-        always {
-          junit 'test-reports/*.xml'
+        post {
+            always {
+                junit 'test-reports/*.xml'
+            }
         }
       }
 
@@ -27,6 +28,5 @@ agent any
         sh '. venv/bin/activate && python3 app.py'
       }
     }
-  }
   }
 }
