@@ -12,7 +12,7 @@ pipeline {
 
     stage("Train the model") {
       when {
-        branch 'master'
+        branch "master"
       }
       steps {
         sh '. venv/bin/activate && python3 model/model.py'
@@ -34,9 +34,7 @@ pipeline {
 
     stage('deploy') {
       when {
-           expression {
-                BRANCH_NAME == 'master'
-           }
+           branch "master"
       }
       steps {
         echo 'Deploying...'
