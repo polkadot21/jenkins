@@ -1,4 +1,3 @@
-CODE_CHANGES = getGitChanges()
 pipeline {
 
   agent any
@@ -6,17 +5,15 @@ pipeline {
   stages {
 
     stage("Clone") {
-      when {
-        expression {
-            BRANCH_NAME == 'master' && CODE_CHANGES == true
-        }
-      }
       steps {
         git branch: "master", url: 'https://github.com/polkadot21/jenkins'
       }
     }
 
     stage("Train the model") {
+      when {
+        branch 'master'
+      }
       steps {
         sh '. venv/bin/activate && python3 model/model.py'
       }
