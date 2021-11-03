@@ -1,5 +1,5 @@
 pipeline {
-agent { dockerfile true }
+agent any
 
   stages {
 
@@ -19,6 +19,7 @@ agent { dockerfile true }
             always {
                 junit 'test-reports/*.xml'
             }
+
         }
       }
 
