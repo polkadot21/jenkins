@@ -1,12 +1,10 @@
 pipeline {
-environment {
-registry = "jenkins"
-registryCredential = "evsa"
-dockerImage = "jenkins"
-}
-agent {
- dockerfile true
-}
+
+  agent {
+    dockerfile {
+        filename 'Dockerfile'
+    }
+  }
 
   stages {
 
