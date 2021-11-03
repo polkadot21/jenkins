@@ -39,4 +39,3 @@ predictions = results.predict(X_test)
 
 #save model
 dump(model, 'model.joblib')
-
