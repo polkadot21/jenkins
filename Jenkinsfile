@@ -1,6 +1,6 @@
 pipeline {
 
-  agent any
+  agent { dockerfile true }
 
   stages {
 
@@ -20,7 +20,7 @@ pipeline {
     stage('test') {
       steps {
         echo 'Testing...'
-        sh '. venv/bin/activate && python3 test.py'
+        sh 'docker build --tag model .'
       }
         post {
             always {
