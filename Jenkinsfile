@@ -14,23 +14,22 @@ pipeline {
       }
     }
 
-    stage('build an image') {
+    stage("Train the model") {
       steps {
-        echo 'Building...'
-        sh 'docker build -t model .'
+        sh '. venv/bin/activate && python3 model/model.py'
       }
     }
+
 
     stage('test') {
       steps {
         echo 'Testing...'
-        sh 'docker run --rm model'
+        sh '. venv/bin/activate && python3 test.py'
       }
         post {
             always {
                 junit 'test-reports/*.xml'
             }
-
         }
       }
 
