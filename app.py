@@ -15,7 +15,7 @@ def check_age(int_feature):
 
 
 @app.route('/')
-def hello_world():
+def index():
     return render_template("index.html")
 
 @app.route('/model')
@@ -41,6 +41,9 @@ def predict_regression():
     output = int(predictions[0])
     return render_template('model.html', prediction_text='Height is {}'.format(output))
 
+@app.route('/test')
+def hello_world():
+    return "Hello, world!\n"
 
 if __name__ == '__main__':
     app.run(debug=True)
