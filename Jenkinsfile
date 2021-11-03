@@ -1,12 +1,25 @@
 pipeline {
+environment {
+registry = "jenkins"
+registryCredential = "evsa"
+dockerImage = "jenkins"
+}
 agent any
 
   stages {
 
-    stage('build') {
+    stage("Clone") {
+      steps {
+        git branch: "master", url: 'https://github.com/polkadot21/jenkins'
+      }
+    }
+
+    stage('build an image') {
       steps {
         echo 'Building...'
-        sh ". venv/bin/activate && pip install -r requirements.txt"
+        script {
+            dockerImage = docker.build registry + "5000"
+        }
       }
     }
 
