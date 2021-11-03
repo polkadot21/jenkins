@@ -20,7 +20,9 @@ pipeline {
     stage('test') {
       steps {
         echo 'Testing...'
-        sh 'docker build --tag model .'
+        container('docker') {
+            sh 'docker build --tag model .'
+        }
       }
         post {
             always {
