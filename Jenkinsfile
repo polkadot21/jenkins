@@ -4,7 +4,9 @@ registry = "jenkins"
 registryCredential = "evsa"
 dockerImage = "jenkins"
 }
-agent any
+agent {
+ dockerfile true
+}
 
   stages {
 
