@@ -17,16 +17,14 @@ agent any
     stage('build an image') {
       steps {
         echo 'Building...'
-        script {
-            dockerImage = docker.build registry + "5000"
-        }
+        sh 'docker build -t model .'
       }
     }
 
     stage('test') {
       steps {
         echo 'Testing...'
-        sh '. venv/bin/activate && python3 test.py'
+        sh 'docker run --rm model'
       }
         post {
             always {

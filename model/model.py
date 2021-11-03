@@ -37,5 +37,9 @@ results = model.fit()
 #make predictions
 predictions = results.predict(X_test)
 
+#evaluate model
+rsquared = r2_score(Y_test, predictions)
+print(rsquared)
+
 #save model
-dump(model, 'model.joblib')
+#dump(model, 'model.joblib')
