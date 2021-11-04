@@ -33,9 +33,7 @@ pipeline {
       }
 
     stage('deploy') {
-      when {
-           branch "master"
-      }
+
       steps {
         echo 'Deploying...'
         sh '. venv/bin/activate && python3 app.py'
