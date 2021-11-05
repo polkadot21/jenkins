@@ -1,14 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-name: model
-labels:
-  app: model
+  namespace: ML-model
+  labels:
+    app: model
+  name: model
 spec:
-ports:
-  - port: 5000
+  ports:
+  - port: 80
+    protocol: TCP
     targetPort: 5000
-selector:
-  app: model
-  tier: model
-type: LoadBalancer
+  selector:
+    app: model
+  type: LoadBalancer
