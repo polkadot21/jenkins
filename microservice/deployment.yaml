@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+name: model
+labels:
+  app: model
+spec:
+strategy:
+  type: Recreate
+template:
+  metadata:
+    labels:
+      app: model
+      tier: model
+  spec:
+    containers:
+    - name: model
+      image: model:v1
+      imagePullPolicy: Always
+      ports:
+      - containerPort: 5000
+        name: model
